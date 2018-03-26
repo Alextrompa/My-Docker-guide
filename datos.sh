@@ -13,4 +13,6 @@
 	# Docker EE (Enterprise Edition), de pago y con más características
 
 
+#Imagenes de las distintas aplicaciones
+#	https://store.docker.com/search?source=verified&type=image
 
