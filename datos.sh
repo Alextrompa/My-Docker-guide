@@ -33,4 +33,35 @@
 
 # Opciones
 
-	
+	-a, --attach
+
+#		Liga el terminal con la salida estandar, la entrada estandar o la salida de error estandar del programa ejecutado
+#		Esta opción debe ejecutarse en modo de primer plano y es la que se utiliza por defecto.
+#		No es necesario ligar las tres salidas, sino que puede elejirse que salidas se ligan.
+
+       --add-host=[]
+
+#		Añade un host IP custom con el formato host:ip
+#		También añade una línea a /etc/hosts.
+#		Esta opción se puede usar varias veces.
+
+       -c=X, --cpu-shares=X
+
+#		Por defecto se utiliza la opción -c=1024.
+#		El parámetro X se utiliza para repartir de manera proporcional el tiempo de CPU entre todos los contenedores cuando estos intentan utilizar más del 100%.
+#		Si por ejemplo tenemos tres contenedores ejecutándose en el sistema con 512, 512 y 1024 respectivamente, el tiempo se repartirá de la siguiente forma: 25%, 25% y 50%.
+#		Nota: Si se disponen de varios nucleos, el sistema repartirá el tiempo de CPU llevando en cuenta todos ellos.
+
+
+       --cpu-count=X
+
+#		Limita el número de CPUs disponibles para la ejecución de contenedores a X.
+#		En Windows Server se aproxima al porcentaje de uso de la CPU.
+
+       --cpu-percent=X
+
+#		Limita el porcentaje de uso de CPU disponible para la ejecución de contenedores a X.
+
+       --cpu-period=X
+
+#		Esta opcíon se utiliza para modificar el tiempo de CPU que el planificador concede a los procesos de los contenedores.
