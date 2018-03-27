@@ -39,13 +39,13 @@
 #		Esta opción debe ejecutarse en modo de primer plano y es la que se utiliza por defecto.
 #		No es necesario ligar las tres salidas, sino que puede elejirse que salidas se ligan.
 
-       --add-host=[]
+	--add-host=[]
 
 #		Añade un host IP custom con el formato host:ip
 #		También añade una línea a /etc/hosts.
 #		Esta opción se puede usar varias veces.
 
-       -c=X, --cpu-shares=X
+	-c=X, --cpu-shares=X
 
 #		Por defecto se utiliza la opción -c=1024.
 #		El parámetro X se utiliza para repartir de manera proporcional el tiempo de CPU entre todos los contenedores cuando estos intentan utilizar más del 100%.
@@ -53,15 +53,67 @@
 #		Nota: Si se disponen de varios nucleos, el sistema repartirá el tiempo de CPU llevando en cuenta todos ellos.
 
 
-       --cpu-count=X
+	--cpu-count=X
 
 #		Limita el número de CPUs disponibles para la ejecución de contenedores a X.
 #		En Windows Server se aproxima al porcentaje de uso de la CPU.
 
-       --cpu-percent=X
+	--cpu-percent=X
 
 #		Limita el porcentaje de uso de CPU disponible para la ejecución de contenedores a X.
 
-       --cpu-period=X
+	--cpu-period=X
 
 #		Esta opcíon se utiliza para modificar el tiempo de CPU que el planificador concede a los procesos de los contenedores.
+
+	--cpu-rt-period=X
+
+#		Con esta opción podemos limitar el periodo de uso de CPU a un determinado tiempo real en microsegundos.
+
+	--dns=[]
+
+#		Utiliza un servidor de DNS diferente al por defecto.
+
+#		Esta opción puede ser usada para sobrescribir la configuración que se le proporciona al contenedor.
+#		Normalmente esta opción es necesaria cuando la configuración DNS falla. En este caso, siempre que se ejecute algo habrá que utilizarla.
+
+	-m, --memory=""
+
+#		Permite añadir una restricción de memoria al contenedor con el formato <número>[<unidad>], donde unidad puede ser b, k, m o g.
+#		Si el sistema soporta memoria swap, esta restricción puede ser mayor que la propia memoria física.
+
+	--memory-reservation=""
+
+#		Mismo formato que el anterior.
+#		Al añadir este flag, si el sistema detecta que hay poca memoria restante, el sistema obliga a los contenedores a limitar su consumo a
+#		lo que se les haya reservado con este comando.
+#		Cuando hagamos uso de esta opción deberiamos establecer un límite por debajo del de la opción anterior (pues la anterior opción es como
+#		un límite hard y esta como uno soft). Por defecto, la memoria reservada es la misma que la establecida con la opción anterior.
+
+	--memory-swap=""
+
+#		Establece el límite de memoria swap que puede utilizar un contenedor. Esta opción debe ser siempre utilizada con la opción -m.
+#		El formato utilizado con esta opción es el mismo que el de las dos opciones anteriores, pero si no especificamos unidad se utiliza b.
+#		El límite establecido debería ser mayor que el de la opción -m.
+#		Por defecto se establece al doble de la opción -m.
+#		Si no queremos limitar la memoria swap, utilizaremos -1 como límite.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
