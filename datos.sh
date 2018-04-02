@@ -1,3 +1,6 @@
+# Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
+
+
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
 
 	sudo systemctl enable docker
@@ -27,7 +30,7 @@
 # Para ejecutar cualquier imagen se utiliza el comando "docker run Imagen"
 # Este comando comprueba las librerias que utiliza la Imagen. En caso de que falte alguna, la descargará del repositorio (como si utilizara docker pull)
 # Ejemplos
-	docker run hello-world		# Esta Imagen suele ejecutarse para comprpobar que la instalanción del programa funciona correctamente.
+	docker run hello-world		# Esta Imagen suele ejecutarse para comprobar que la instalanción del programa funciona correctamente.
 	docker run -it ubuntu bash	# Esta Imagen es el bash de ubuntu. Es como ejecutar el mismo programa en la susodicha distribución.
 	docker run openjdk		# Sí, el kit de desarrollo de Java. Se utiliza para hacer contenedores de aplicaciones Java. (También existen para Haskell y Ruby entre otros)
 
@@ -99,6 +102,25 @@
 #		Si no queremos limitar la memoria swap, utilizaremos -1 como límite.
 
 
+
+# Un contenedor ya en ejecución se puede unir a un terminal (como si hubiesemos utilizado la opción -a del run) con 
+# el comando attach
+#Ejemplo
+	docker attach cassandra
+
+# Opciones
+
+	--detach-keys
+
+#		Anula la secuencia de teclas para separarla del contenedor
+
+	--no-stdin
+
+#		No liga la entrada estandar
+
+	--sig-proxy
+
+#		Atrapa todas las señales del proceso
 
 
 
