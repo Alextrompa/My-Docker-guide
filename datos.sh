@@ -4,9 +4,9 @@
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
 
 	sudo systemctl enable docker
-	
+
 	# Si esto no nos gusta y queremos desactivar esto
-	
+
 	sudo systemctl disable docker
 
 
@@ -22,8 +22,8 @@
 # Dos conceptos, Imagen y Contenedor
 
 #	Imagen:		Instrucciones para crear un contenedor. Estas son solo de lectura.
-#	Contenedor:	Es una instancia ejecutable de una imagen. Se pueden crear, poner 
-#			en marcha, parar, mover o borrar. Incluso se puede crear una 
+#	Contenedor:	Es una instancia ejecutable de una imagen. Se pueden crear, poner
+#			en marcha, parar, mover o borrar. Incluso se puede crear una
 #			Imagen a partir del estado actual de un contenedor.
 
 
@@ -127,15 +127,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+Ahora paso de todo y no 
