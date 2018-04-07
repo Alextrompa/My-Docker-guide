@@ -1,4 +1,5 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
+# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, 
 
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
@@ -121,6 +122,41 @@
 	--sig-proxy
 
 #		Atrapa todas las señales del proceso
+
+
+
+# Al igual que cualquier programa, los contenedores tienen sus propios sistemas de ficheros
+# y se pueden administrar igual que cualquier sistema de ficheros.
+# Los comandos de los que voy a hablar son cp y rm.
+# A diferencia de otros sistemas de archivos, no existen más comandos tales como mv o ln.
+
+# cp
+# Copia ficheros entre contenedores y el sistema de ficheros local
+# Ejemplo
+
+	docker cp fa25fka82:/holafichero .
+	# Este comando lo que ha hecho es (sabiendo que el contenedor fa25fka82 es una instancia del SO Ubuntu)
+#	ha copiado el fichero /holafichero a mi directorio actual
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

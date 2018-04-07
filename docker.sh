@@ -11,6 +11,8 @@ dnf config-manager \
     
 dnf install docker-ce
 
+#Hacemos que se inicie siempre al arrancar la máquina
+systemctl enable docker
 
 #A partir de aquí iniciamos y probamos el docker con el hola mundo
 systemctl start docker
