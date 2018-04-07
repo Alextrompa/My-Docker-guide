@@ -39,9 +39,18 @@
 
 	-a, --attach
 
-#		Liga el terminal con la salida estandar, la entrada estandar o la salida de error estandar del programa ejecutado
+#		Liga el terminal con la salida estandar, la entrada estandar o la salida de error estandar del programa ejecutado.
 #		Esta opción debe ejecutarse en modo de primer plano y es la que se utiliza por defecto.
 #		No es necesario ligar las tres salidas, sino que puede elejirse que salidas se ligan.
+
+	-i
+
+#		Mantiene abierta la entrada estándar en el terminal aunque esta no esté abierta por la opción -a.
+
+	-t
+
+#		Asgina un pseudo -TTY, lo que hace que sea correcto su uso para la utilización de un shell interactivo.
+#		Esta opción es incompatible con la redirección de la entrada estándar.
 
 	--add-host=[]
 
@@ -125,22 +134,27 @@
 
 
 
-# Al igual que cualquier programa, los contenedores tienen sus propios sistemas de ficheros
-# y se pueden administrar igual que cualquier sistema de ficheros.
+# Al igual que cualquier programa, los contenedores tienen sus propios sistemas de ficheros y se pueden administrar igual que cualquier sistema de ficheros.
 # Los comandos de los que voy a hablar son cp y rm.
 # A diferencia de otros sistemas de archivos, no existen más comandos tales como mv o ln.
 
 # cp
-# Copia ficheros entre contenedores y el sistema de ficheros local
+# Copia ficheros entre contenedores y el sistema de ficheros local.
 # Ejemplo
 
-	docker cp fa25fka82:/holafichero .
-	# Este comando lo que ha hecho es (sabiendo que el contenedor fa25fka82 es una instancia del SO Ubuntu)
-#	ha copiado el fichero /holafichero a mi directorio actual
+	docker cp 0dd182904e13:/holafichero .
+	# Este comando (sabiendo que el contenedor 0dd182904e13 es una instancia del SO Ubuntu) ha copiado el fichero /holafichero del contenedor a mi directorio actual.
+	# Si el fichero que se va a copiar es un directorio, este se copiará recursivamente (por lo que podemos decir que docker cp equivale al cp -a de Unix).
 
+# Opciones
 
+	-a, --archive 
 
+#		Copia también los UID y GID de los ficheros.
 
+	-L, --follow-link
+
+#		Si en alguna de las rutas, se utiliza un enlance simbólico a un directorio, este se sigue.
 
 
 
