@@ -181,9 +181,21 @@
 #		Borra los volúmenes asociados a los contenedores
 
 
+# Create
+# Crea un contenedor a partir de una imagen
+# Ejemplo
 
+	docker create -it ubuntu bash
 
+# Este comando es como utilizar docker run -d(detach, segundo plano), con la diferencia que este no se inicia
+# Para iniciarlo debemos utilizar la orden docker start de la que hablaré ahora.
+# La orden create tiene gran cantidad de opciones, pero estas están todas 
+# incluidas (o al menos no he visto ninguna que no lo estuviese) en la orden run, por lo que considero innecesario abordarlas de nuevo.
 
+# Start
+https://docs.docker.com/engine/reference/commandline/start/
+# Stop
+https://docs.docker.com/engine/reference/commandline/stop/
 
 
 
