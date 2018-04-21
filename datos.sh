@@ -27,6 +27,10 @@
 #			en marcha, parar, mover o borrar. Incluso se puede crear una
 #			Imagen a partir del estado actual de un contenedor.
 
+# Otro concepto, Volumen. NOTE Explicar que es.
+
+
+
 
 # Para ejecutar cualquier imagen se utiliza el comando "docker run Imagen"
 # Este comando comprueba las librerias que utiliza la Imagen. En caso de que falte alguna, la descargará del repositorio (como si utilizara docker pull)
@@ -134,9 +138,7 @@
 
 
 
-# Al igual que cualquier programa, los contenedores tienen sus propios sistemas de ficheros y se pueden administrar igual que cualquier sistema de ficheros.
-# Los comandos de los que voy a hablar son cp y rm.
-# A diferencia de otros sistemas de archivos, no existen más comandos tales como mv o ln.
+# Al igual que cualquier programa, los contenedores tienen sus propios sistemas de ficheros y también se pueden administrar.
 
 # cp
 # Copia ficheros entre contenedores y el sistema de ficheros local.
@@ -157,8 +159,26 @@
 #		Si en alguna de las rutas, se utiliza un enlance simbólico a un directorio, este se sigue.
 
 
+# rm
+# Borra contenedores
+# Ejemplo
+	
+	docker rm -f ffce1fcbf302
+	# Este comando borra el contenedor (que no la imagen), por lo que se puede relanzar cuantas veces se quiera
+	# No puedo observar diferencia entre este comando y el kill.
+# Opciones
 
+	-f, --force
 
+#		Fuerza la eliminación del contenedor elegido. Para esto envía la señal SIGKILL.
+
+	-l, --link
+
+#		Borra los enlaces especificados.
+
+	-v, --volumes
+
+#		Borra los volúmenes asociados a los contenedores
 
 
 
