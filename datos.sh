@@ -120,6 +120,7 @@
 # Un contenedor ya en ejecución se puede unir a un terminal (como si hubiesemos utilizado la opción -a del run) con 
 # el comando attach
 #Ejemplo
+
 	docker attach cassandra
 
 # Opciones
@@ -164,6 +165,7 @@
 # Ejemplo
 	
 	docker rm -f ffce1fcbf302
+
 	# Este comando borra el contenedor (que no la imagen), por lo que se puede relanzar cuantas veces se quiera
 	# No puedo observar diferencia entre este comando y el kill.
 # Opciones
@@ -193,10 +195,23 @@
 # incluidas (o al menos no he visto ninguna que no lo estuviese) en la orden run, por lo que considero innecesario abordarlas de nuevo.
 
 # Start
-https://docs.docker.com/engine/reference/commandline/start/
-# Stop
-https://docs.docker.com/engine/reference/commandline/stop/
+# Activa contenedores que están parados.
+# Pueden ser contenedores que se les haya detenido desde fuera.
+# También pueden ser contenedores que se hayan creado pero no se hayan puesto en marcha.
+# Ejemplo
 
+	docker start -a -i 6020b75cbd61
+
+# Opciones
+
+	-a, --attach # Igual que en el comando run
+
+	--detach-keys # Igual que en el comando attach
+
+	-i, --interactive # Une el terminal con la entrada estándar del contenedor
+
+# Stop
+# Para contenedores que estén en marcha
 
 
 
