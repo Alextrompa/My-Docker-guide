@@ -1,5 +1,5 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
-# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, 
+# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, pull, info, diff
 
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
@@ -212,10 +212,23 @@
 
 # Stop
 # Para contenedores que estén en marcha
+# Tras un periodo de tiempo de gracia, los mata (desconozco
+#Ejemplo
+
+	docker stop 70d8bf22abb5
+
+# Opciones
+
+	-t, --time # Tiempo en segundos que se espera hasta matar a los contedores.
+	# Si no se especifica el tiempo que acompaña a esta opción son diez segundos.
+	# Desconozco el tiempo que se espera por defecto si no se usa esta opción (creo que infinito, pero no puedo asegurarlo).
 
 
 
-
+# pause
+# unpause
+# events
+# kill
 
 
 
