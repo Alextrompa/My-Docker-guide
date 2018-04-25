@@ -225,9 +225,29 @@
 
 
 
-# pause
-# unpause
-# events
+# Pause
+# Suspende todos los procesos de un contenedor
+#Ejemplo	
+
+	docker pause 2d97a9c94feb
+
+# Opciones
+# No hay
+
+# Unpause
+# Es el comando opuesto a pause. Reanuda todos los procesos parados en un contenedor
+
+	docker unpause 2d97a9c94feb
+
+# Opciones
+# No hay
+
+
+# Events
+# 
+
+
+
 # kill
 
 
