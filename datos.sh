@@ -28,6 +28,7 @@
 #			Imagen a partir del estado actual de un contenedor.
 
 # Otro concepto, Volumen. NOTE Explicar que es.
+# Nombres  o id de contenedor. Explicar la diferencia y que casi todos los comandos que he puesto son el id porque no conocia lo del nombre.
 
 
 
@@ -115,7 +116,9 @@
 #		Por defecto se establece al doble de la opción -m.
 #		Si no queremos limitar la memoria swap, utilizaremos -1 como límite.
 
+	--name
 
+#		Establece un nombre para el contenedor que se va a poner en ejecución
 
 # Un contenedor ya en ejecución se puede unir a un terminal (como si hubiesemos utilizado la opción -a del run) con 
 # el comando attach
@@ -258,7 +261,35 @@
 
 
 # kill
-# exec
+# Mata un contenedor. El proceso principal del mismo recibe, por defecto, la señal SIGKILL.
+# Ejemplo
+
+	docker kill boring_meninsky
+
+# Opciones
+
+	-s, --signal # Se envía la señal especificada en lugar de SIGKILL
+
+# Exec
+# Ejecuta un comando dentro de un contenedor.
+# El comando utilizado solo estará activo mientras el proceso principal del contenedor lo esté.
+# El comando no se reiniciará si el contenedor es reiniciado.
+# Por defecto se utilizará el directorio del contenedor.
+# Si la imagen subyacente tiene especificado un directorio diferente, se usará este en su lugar. 
+# El comando deberá ser ejecutable.
+# Ejemplo
+
+	docker exec -d boring_meninsky touch /home/hola/mundo
+
+# Opciones
+
+	-d, --detach # Ejecutar en segundo plano con respecto a este terminal
+	-i, --interactive # Mantiene la entrada estándar abierta aunque no se haya ligado
+	--privileged # Da privilegios extendidos al comando
+	-t, --tty # Establece un pseudo-tty
+	-u, --user # UID
+
+
 # export
 # history
 # import
@@ -272,6 +303,7 @@
 # node
 # plugin
 # port
+# ps
 # rename
 # restart
 # rmi
