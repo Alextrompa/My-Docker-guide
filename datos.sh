@@ -1,5 +1,5 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
-# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, pull, info, diff
+# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, pull, diff, help, image
 
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
@@ -243,14 +243,52 @@
 # No hay
 
 
-# Events
-# 
+# Events NOTE esté sin acabar porque es muy largo y tiene muchos puntos
+# Muestra todos los eventos correspondientes a TODOS los contenedores.
+# Los eventos se muestran en tiempo real. Este comando es interesante para monitorizar los contenedores.
+# Ejemplo
+
+	docker events
+
+# Opciones
+
+	-f, --filter # Filtra la salida según las condiciones proporcionadas
+			# Posibles filtros
 
 
 
 # kill
-
-
+# exec
+# export
+# history
+# import
+# info
+# inspect
+# load
+# login
+# logout
+# logs
+# network
+# node
+# plugin
+# port
+# rename
+# restart
+# rmi
+# save
+# search
+# secret
+# service
+# stack
+# stats
+# swarm
+# system
+# tag
+# top
+# update
+# version
+# volume
+# wait
 
 
 
