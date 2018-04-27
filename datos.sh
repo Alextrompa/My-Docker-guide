@@ -290,9 +290,53 @@
 	-u, --user # UID
 
 
-# export
-# history
-# import
+# Export
+# Exporta el contenido del sistema de ficheros de un contenedor como un fichero tar
+# Este comando es interesante para la realización de copias de seguridad
+# No funciona con volúmenes
+# Ejemplo
+
+	docker export kind_mcclintock > comprimido.tar
+
+# Opciones
+
+	-o, --output # Mete la salida en el fichero especificado en vez de en la salida estándar
+	#Viendo esto se puede decir que utilza la sintaxis de cpio	
+
+
+# Import
+# Importa el contenido de fichero comprimido para crear el sistema de ficheros de una imagen
+# No le termino de ver mucho la utilidad, ni siquiera he podido probarlo sin errores.
+# Ejemplo
+
+	docker import http://example.com/exampleimage.tgz
+
+# Opciones
+
+	-c, --change # Utiliza las instrucciones del Dockerfile (ya se hablará de él) para crear la imagen
+	-m, --message # Establece un mensaje de confirmación para la imagen importada
+
+# History
+# Muestra el historial de una imagen
+# La salida tiene los siguientes campos:
+	# ID . ID de la imagen
+	# CreatedSince. Intervalo de tiempo que ha pasado desde que se creó la imagen
+	# CreatedAt. Cuando se creó la imagen
+	# CreatedBy. Comando utilizado para crear la imagen
+	# Size. Tamaño que ocupa la imagen en disco
+	# Comment. Comentario de la imagen
+# Ejemplo
+
+	docker history debian
+
+# Opciones
+
+	--format # Utiliza una platilla Go para dibujar la salida
+	-H, --human # Los datos numéricos se muestran en un formato legible
+	--no-trunc # No trunca la salida
+	-q, --quit # Solo muestra IDs numericos
+
+
 # info
 # inspect
 # load
