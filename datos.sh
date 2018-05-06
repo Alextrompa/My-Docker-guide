@@ -337,7 +337,19 @@
 	-q, --quit # Solo muestra IDs numericos
 
 
-# info
+# Info
+# Muestra información sobre el sistema y la instalación de Docker.
+# Muestra información tal como la versión del kernel o el número de contenedores e imágenes (únicas)
+# Ejemplo
+
+	docker info
+
+# Opciones
+
+	-f, --format # Puedes proporcionarle una plantilla Go para que la salida se adapte a esta
+
+
+
 # inspect
 # load
 # login
