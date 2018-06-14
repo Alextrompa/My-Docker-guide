@@ -20,14 +20,31 @@
 #	https://store.docker.com/search?source=verified&type=image
 
 
-# Dos conceptos, Imagen y Contenedor
+# Conceptos
 
 #	Imagen:		Instrucciones para crear un contenedor. Estas son solo de lectura.
+
 #	Contenedor:	Es una instancia ejecutable de una imagen. Se pueden crear, poner
 #			en marcha, parar, mover o borrar. Incluso se puede crear una
 #			Imagen a partir del estado actual de un contenedor.
 
-# Otro concepto, Volumen. NOTE Explicar que es.
+#	Volumen:	Es la mejor forma para que los datos en un contenedor se almacenen de una manera persistente 
+#			y se conserven aún después de eliminar el contenedor.
+#			Facilita que varios contenedores compartan el sistema de ficheros.
+#			Son administrados directmente por Docker, por lo que son sencillos de mantener.
+#			El usuario puede crearlos, borrarlos y modificarlos.
+
+#	Montaje ligado: Parecidos a los volúmenes, aunque tienen una funcionalidad más limitada.
+#			Mientras que los volúmenes se almacenan de manera aislada, los montajes ligados consisten en
+#			montar un fichero o directorio en un contenedor. El fichero es referenciado por su ruta.
+#			Peligro: El sistema de ficheros de la máquina queda expuesto ante los programas del contenedor
+#			por lo que podrían modificarlo.
+
+#	Montaje tmpfs:	Esta opción solo se puede utilizar en linux, y se utiliza cuando no queremos que los datos del contenedor perduren en el tiempo.
+#			Esto puede ser así por seguridad, porque el contenedor puede manejar una gran cantidad de datos o por cualquier otro motivo.
+
+# NOTE, quizás haya que mejorar las explicaciones de los conceptos
+
 # Nombres  o id de contenedor. Explicar la diferencia y que casi todos los comandos que he puesto son el id porque no conocia lo del nombre.
 
 

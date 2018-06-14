@@ -1,4 +1,16 @@
 #!/usr/bin/bash
+
+#Marca (no incluir en el script final)
+
+pvcreate /dev/sdb /dev/sdc /dev/sdd
+vgextend fedora /dev/sdb /dev/sdc /dev/sdd
+lvextend -L +2.98G /dev/fedora/root
+resize2fs /dev/fedora/root
+
+dnf clean all
+
+#Marca
+
 #Shell instalador de docker en Fedora
 
 dnf update
