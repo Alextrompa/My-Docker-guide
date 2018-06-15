@@ -43,7 +43,7 @@
 #	Montaje tmpfs:	Esta opción solo se puede utilizar en linux, y se utiliza cuando no queremos que los datos del contenedor perduren en el tiempo.
 #			Esto puede ser así por seguridad, porque el contenedor puede manejar una gran cantidad de datos o por cualquier otro motivo.
 
-# NOTE, quizás haya que mejorar las explicaciones de los conceptos
+# NOTE, quizás haya que mejorar las explicaciones de los conceptos (¿Debería explicar como crear y administrar volumenes, etc ?)
 
 # Nombres  o id de contenedor. Explicar la diferencia y que casi todos los comandos que he puesto son el id porque no conocia lo del nombre.
 
@@ -366,11 +366,51 @@
 	-f, --format # Puedes proporcionarle una plantilla Go para que la salida se adapte a esta
 
 
+# Inspect
+# Muestra información de bajo de nivel del objeto (imagenes, contenedores, volumenes, etc) analizado.
+# La información suele mostrarse utilizando un array JSON
 
-# inspect
-# load
-# login
-# logout
+	docker inspect inspiring_johnson
+
+# Opciones
+
+	-f, --format # Puedes proporcionarle una plantilla Go para que la salida se adapte a esta
+#		Esta opción puede ser interesante, pues la salida suele generar una gran cantidad de datos y puedes omitir información con ella.
+	-s, --size # Si el objeto es un contenedor, se muestra el tamaño total de sus ficheros
+
+# Load
+# Carga una imagen de un archivo .tar o de la entrada estándar
+
+	docker load < archivo.tar
+
+# Opciones 
+
+	-i, --input # Lee de un fichero en lugar de la entrada estandar
+	-q, --quiet # No muestra salida, se calla
+
+
+# Definición necesaria: registry, una imagen concreta para guardar imágenes. NOTE
+
+# Login
+# Este comando se utiliza para conectarse a un "registry", que bien puede ser local o puede estar alojada en otro sitio.
+
+	docker login localhost:8080
+
+# Opciones
+
+	-p, --password # Contraseña en el siguiente campo (NO RECOMENDABLE)
+	--password-stdin # Lee la contraseña de la entrada estándar
+	-u, --username # Usuario en el siguiente campo
+# NOTE no se si debería profundizar un poco más en este comando. Veo un poco complicado todo lo relativo a almacenamiento de contraseñas
+# https://docs.docker.com/engine/reference/commandline/login/
+
+# Logout
+# Te desconecta de un registry
+
+	docker logout localhost:8080
+
+
+
 # logs
 # network
 # node
@@ -394,7 +434,7 @@
 # version
 # volume
 # wait
-
+# images
 
 
 
