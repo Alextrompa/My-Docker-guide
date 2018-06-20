@@ -411,7 +411,13 @@
 
 
 
-# logs
+# Logs  FIXME
+# No termino de entender este comando
+# Muestra las últimas salidas del contenedor seleccionado.
+# Con la opción --follow se queda imprimiendo las salidas del contenedor
+https://docs.docker.com/engine/reference/commandline/logs/
+
+
 # network
 # node
 # plugin
