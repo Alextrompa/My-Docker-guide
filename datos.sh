@@ -482,7 +482,30 @@ https://docs.docker.com/engine/reference/commandline/logs/
 		       # Literalmente: Seconds to wait for stop before killing the container
 		        https://docs.docker.com/engine/reference/commandline/restart/
 
-# rmi
+# Rmi
+# Elimina una imagen.
+# Ejemplo
+
+	docker rmi hello-world
+
+# Opciones
+
+	-f, --force # Si una imagen tiene varias etiquetas, si no usamos esta opción, borramos solo la etiqueta seleccionada.
+		# Si por el contrario utilizamos esta opción Y el ID de la imagen, borramos todas las etiquetas también
+	--no-prune # No elimina los padres sin etiquetar
+			# NOTE Do not delete untagged parents No termino de entender esto, creo que todo tiene etiqueta 
+
+
+# Tag
+# A veces trabajamos con varias versiones de la misma imagen.
+# Para diferenciar estas diferentes versiones, recurrimos a las etiquetas.
+# Así, este comando añade una etiqueta a una version de una imagen.
+# La versión se puede especificar con Image:Version pero si no se especifica, se utiliza la versión "latest"
+# Ejemplo:
+
+	docker tag hello-world version1
+
+
 # save
 # search
 # secret
@@ -491,7 +514,6 @@ https://docs.docker.com/engine/reference/commandline/logs/
 # stats
 # swarm
 # system
-# tag
 # top
 # update
 # version
