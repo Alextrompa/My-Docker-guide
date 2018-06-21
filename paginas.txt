@@ -4,3 +4,5 @@ https://docs.docker.com/get-started/part6/#deploy-your-app-on-a-cloud-provider
 https://forums.docker.com/c/open-source-projects
 https://www.docker.com/docker-community
 https://docs.docker.com/storage/volumes/
+https://medium.freecodecamp.org/an-introduction-to-docker-tags-9b5395636c2a
+De la ultima pagina he sacado la explicacion de las tags
