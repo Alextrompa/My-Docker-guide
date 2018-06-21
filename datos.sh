@@ -181,18 +181,19 @@
 
 
 # rm
-# Borra contenedores
+# Borra contenedores que estén parados.
+# Si se borran, ya no se podrán volver a activar.
 # Ejemplo
 	
 	docker rm -f ffce1fcbf302
 
-	# Este comando borra el contenedor (que no la imagen), por lo que se puede relanzar cuantas veces se quiera
-	# No puedo observar diferencia entre este comando y el kill.
+	# Este comando borra el contenedor (que no la imagen).
 # Opciones
 
 	-f, --force
 
 #		Fuerza la eliminación del contenedor elegido. Para esto envía la señal SIGKILL.
+#		Aunque los contenedores deben estar parados, pueden estar corriendo si usamos esta opción.
 
 	-l, --link
 
@@ -418,13 +419,69 @@
 https://docs.docker.com/engine/reference/commandline/logs/
 
 
-# network
-# node
-# plugin
-# port
-# ps
-# rename
-# restart
+# Network
+# Al igual que image o container, con network administramos las redes entre contenedores.
+# NOTE, no se si explicar este concepto o ya es demasiado.
+# Otra duda que tengo es si hacer referencia a esto como "redes" o con otro término (p.e. network directamente)
+
+
+# Node
+# NOTE, lo mismo que con Network
+
+
+# Plugin
+# Igual que con Node
+
+
+# Port
+# Muestra los puertos en los que está utilizando un contenedor.
+# Estos puertos no están separados de los de la máquina real.
+# Ejemplo:
+
+	# Ejemplo con la imagen de la documentacion de Docker
+	docker run -it -p 4000:4000 docs/docker.github.io:latest
+	docker port jovial_yallow
+	# Mostrará que está usando el puerto 4000
+
+# Ps
+# Lista los contenedores
+# Ejemplo
+
+	docker ps
+	docker ps -a --filter status=running #Ejemplo redundante, pero muy bueno para esto
+
+# Opciones
+	-a, --all # Muestra todos los contenedores, ya que por defecto solo muestra los que están corriendo
+	-s, --size # Muestra el tamaño de los ficheros del contenedor
+	-q, --quiet # Solo muestra los IDs de los contenedores
+	--no-trunc # No recorta el tamaño de la salida
+	-n X, --last X # Muestra sólo los X últimos contenedores creados
+	--latest, -l # Muestra sólo el último contenedor creado. Si no me equivoco, equivale a "-n 1"
+	--format # Usando una plantilla Go, podemos formatear la salida
+	-f, --filter # Con esta opción, podemos añadir condiciones. En la salida solo se mostrarán los contenedores que las cumplan.
+		# Las condiciones que podemos poner pueden abarcar cosas como el id, el nombre o las networks que utilizan.
+
+# Rename
+# Cambia el nombre de un contenedor
+# Ejemplo
+
+	docker rename ecstatic_ptolemy nombre_nuevo #Ahora el contenedor se llama nombre_nuevo
+
+# Restart
+# Reinicia o relanza un contenedor.
+# Este comando puede ser interesante si un contenedor da problemas.
+# Este comando no afecta al espacio de memoria de un contenedor, por lo que no se pierden cambios.
+# Ejemplo
+
+	docker restart nombre_nuevo
+	
+# Opciones
+
+	-t X, --time X # FIXME 
+		       # Solo tiene esta opción, pero no termino de entender el uso
+		       # Literalmente: Seconds to wait for stop before killing the container
+		        https://docs.docker.com/engine/reference/commandline/restart/
+
 # rmi
 # save
 # search
