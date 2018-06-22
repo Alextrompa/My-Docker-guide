@@ -379,6 +379,18 @@
 #		Esta opción puede ser interesante, pues la salida suele generar una gran cantidad de datos y puedes omitir información con ella.
 	-s, --size # Si el objeto es un contenedor, se muestra el tamaño total de sus ficheros
 
+# Save
+# Guarda una imagen en un archivo .tar
+# La salida la produce por la salida estándar
+# Ejemplo
+
+	docker save hello-world > imagen.tar
+	
+# Opciones
+	
+	-o, --output # Manda la salida a un fichero
+
+
 # Load
 # Carga una imagen de un archivo .tar o de la entrada estándar
 
@@ -506,7 +518,7 @@ https://docs.docker.com/engine/reference/commandline/logs/
 	docker tag hello-world version1
 
 
-# save
+
 # search
 # secret
 # service
