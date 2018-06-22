@@ -516,11 +516,30 @@ https://docs.docker.com/engine/reference/commandline/logs/
 # Ejemplo:
 
 	docker tag hello-world version1
+	
+
+# Search
+# Este comando se utiliza para buscar imágenes en la Docker Store.
+# Ejemplo
+
+	docker search database
+
+# Opciones (Algunas están obsoletas, por lo que no las voy a comentar)
+
+	-f, --filter # Igual que con el comando ps, aquí también podemos añadir filtros a la salida.
+		 # Estos filtros pueden ser, el número mínimo de estrellas, si la imagen es oficial y si está automatizada.
+
+	--format # Podemos formatear la salida utilizando una plantilla Go.
+	
+	--limit X # Limita la salida a las X imágenes con más estrellas (starred).
+	
+	--no-trunc # No recorta la salida.
+	
+
+# Secret (administra los secretos)
+# NOTE Lo mismo que con node
 
 
-
-# search
-# secret
 # service
 # stack
 # stats
