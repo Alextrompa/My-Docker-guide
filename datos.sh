@@ -1,5 +1,5 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
-# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, pull, diff, help, image
+# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, pull, diff, help, image, system
 
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
@@ -540,19 +540,69 @@ https://docs.docker.com/engine/reference/commandline/logs/
 # NOTE Lo mismo que con node
 
 
-# service
-# stack
-# stats
-# swarm
-# system
-# top
-# update
-# version
+# Stats
+# Muestra en tiempop real las estadísticas de consumo de un contenedor.
+# Ejemplo
+
+	docker stats cont
+	
+# Opciones
+
+	-a, --all # Muestra la información de todos los contenedores (sin esta opción, solo los que están corriendo).
+	
+	--format # Como siempre, podemos formatear la salida utilizando una plantilla Go.
+	
+	--no-stream # No monitoriza los contenedores, solo muestra la primera impresión de datos.
+	
+	--no-trunc # No recorta la salida.
+
+
+# Top
+# Muestra los procesos que se estén ejecutando dentro de un contenedor
+# Ejemplo
+
+	docker top cont
+
+# Opciones
+# Las del comando ps (que no docker ps).
+
+
+# Update
+# Actualiza la configuración de un contenedor
+# Ejemplo
+
+	docker update --cpus 1 cont
+	
+# Opciones (muestro sólo unas cuantas que son interesantes)
+
+
+	--cpu-period # Modifica el tiempo de CPU que el planificador concede a los procesos de los contenedores.
+
+	--cpu-quota # Modifica el porcentaje de tiempo de CPU que el planificador concede a los procesos contenedores.
+
+	--cpus # Limita el número de CPUs que puede utilizar el contenedor
+
+	-m, --memory # Limita la memoria que puede usar el contenedor
+	
+	--memory-reservation # Cuando se detecta que queda poca memoria restante
+		#	       el sistema obliga a los contenedores a utilizar como mucho esta cantidad de memoria.
+		# 	       Evidentemente, esta debe ser menor que la memoria límite.
+		
+	--memory-swap # Establece el limite de memoria swap que puede utilizar un contenedor
+
+
+# Version
+
+
+
 # volume
 # wait
 # images
 
 
+# Service
+# Stack
+# Swarm
 
 
 
