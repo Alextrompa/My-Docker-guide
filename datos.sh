@@ -592,17 +592,59 @@ https://docs.docker.com/engine/reference/commandline/logs/
 
 
 # Version
+# Muestra la información sobre la versión del sistema Docker
+# Ejemplo
+
+	docker version
+	
+# Opciones
+
+	-f, --format # Podemos formatear la salida con una plantilla Go
+
+# Wait
+# Bloquea la terminal hasta que el contenedor (o contenedores) seleccionados terminen.
+# Cuando se pare la ejecución del contenedor seleccionado, el terminal mostrará el código de salida y se desbloqueará.
+# Ejemplo
+
+	docker wait cont
 
 
+# Images
+# Lista las imágenes
+# Ejemplo
 
-# volume
-# wait
-# images
+	docker images
+	
+# Opciones
 
+	-a, --all # Muestra todas las imágenes (incluyendo las intermedias).
+	
+	--digest # Muestra una columna extra llamada digest, no sé lo que es, pues es un código raro.
+
+	--format # Se puede formatear la salida con una plantilla Go, como siempre.
+	
+	-q, --quiet # Solo muestra los IDs númericos de las imágenes.
+	
+	--no-trunc # No recorta la salida.
+	
+	-f, --filter # Como es habitual en este tipo de comandos, podemos filtrar la salida.
+			# Las condiciones de filtrado en esta ocasión abarcan campos como la etiqueta o cuando fueron creadas.
 
 # Service
 # Stack
 # Swarm
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
