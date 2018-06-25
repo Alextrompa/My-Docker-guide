@@ -19,7 +19,7 @@ dnf -y install VirtualBox-5.1
 
 #Shell instalador de docker en Fedora
 
-dnf update
+dnf -y update
 
 dnf -y install dnf-plugins-core
 
@@ -27,7 +27,7 @@ dnf config-manager \
 	--add-repo \
 	https://download.docker.com/linux/fedora/docker-ce.repo
     
-dnf install docker-ce
+dnf -y install docker-ce
 
 #Vamos a instalar docker compose, una herramienta de Docker
 curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
