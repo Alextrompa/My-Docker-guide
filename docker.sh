@@ -21,6 +21,8 @@ dnf -y install VirtualBox-5.1
 
 dnf -y update
 
+dnf -y upgrade
+
 dnf -y install dnf-plugins-core
 
 dnf config-manager \
