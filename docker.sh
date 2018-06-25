@@ -9,6 +9,12 @@ resize2fs /dev/fedora/root
 
 dnf clean all
 
+wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo -O /etc/yum.repos.d/virtualbox.repo
+
+dnf -y install VirtualBox-5.1
+
+/usr/lib/virtualbox/vboxdrv.sh setup
+
 #Marca
 
 #Shell instalador de docker en Fedora
