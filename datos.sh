@@ -1,6 +1,6 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
 # Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, pull, diff, help, image, system
-
+# Comando de los que por ahora no voy a hablar o no lo voy a hacer directamente: build, node, network, secret, service, stack, swarm y plugin.
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
 
@@ -43,7 +43,14 @@
 #	Montaje tmpfs:	Esta opción solo se puede utilizar en linux, y se utiliza cuando no queremos que los datos del contenedor perduren en el tiempo.
 #			Esto puede ser así por seguridad, porque el contenedor puede manejar una gran cantidad de datos o por cualquier otro motivo.
 
-# NOTE, quizás haya que mejorar las explicaciones de los conceptos (¿Debería explicar como crear y administrar volumenes, etc ?)
+
+# 	Registry: 	Un registry es una base de datos de imágenes. O dicho de otra forma, un sitio donde guardar las imágenes, un hub.
+#			El registry más famoso es el Docker Hub o DOcker Store, donde podemos crear una cuenta de usuario y subir nuestras imágenes (también descargarlas).
+#			Registry es en sí otra imágen, por lo que sí, podemos descargarla, hacer un contenedor con ella y guardar en el mismo nuestras imágenes.
+
+
+# NOTE, quizás haya que mejorar las explicaciones de los de algunos conceptos
+# Debería explicar como crear y administrar volumenes, etc. Esto en la tercera parte.
 
 # Nombres  o id de contenedor. Explicar la diferencia y que casi todos los comandos que he puesto son el id porque no conocia lo del nombre.
 
@@ -264,7 +271,6 @@
 # No hay
 
 
-# Events NOTE esté sin acabar porque es muy largo y tiene muchos puntos
 # Muestra todos los eventos correspondientes a TODOS los contenedores.
 # Los eventos se muestran en tiempo real. Este comando es interesante para monitorizar los contenedores.
 # Ejemplo
@@ -273,8 +279,18 @@
 
 # Opciones
 
+	--format # Podemos utilizar una plantilla Go para formatear la salida.
+	
+	--since # Solo muestra eventos ocurridos desde la marca de tiempo que se le proporcione.
+	
+	--until # Solo muestra eventos ocurridos antes de la marca de tiempo proporcionada.
+
 	-f, --filter # Filtra la salida según las condiciones proporcionadas
-			# Posibles filtros
+			# De todos los comandos con filtro, este es el más complejo y completo.
+			# Una aclaración, si se pone más de un tipo de filtro igual (por ejemplo, dos ID), la condición se evaluará como OR.
+			# Si se ponen varios filtros de tipos diferentes, su condición se evalua como AND
+			# Posibles filtros:
+			#	config, container,daemon, event, image, label, network, node, plugin, scope, secret, service, type y volume
 
 
 
@@ -402,8 +418,6 @@
 	-q, --quiet # No muestra salida, se calla
 
 
-# Definición necesaria: registry, una imagen concreta para guardar imágenes. NOTE
-
 # Login
 # Este comando se utiliza para conectarse a un "registry", que bien puede ser local o puede estar alojada en otro sitio.
 
@@ -429,20 +443,6 @@
 # Muestra las últimas salidas del contenedor seleccionado.
 # Con la opción --follow se queda imprimiendo las salidas del contenedor
 https://docs.docker.com/engine/reference/commandline/logs/
-
-
-# Network
-# Al igual que image o container, con network administramos las redes entre contenedores.
-# NOTE, no se si explicar este concepto o ya es demasiado.
-# Otra duda que tengo es si hacer referencia a esto como "redes" o con otro término (p.e. network directamente)
-
-
-# Node
-# NOTE, lo mismo que con Network
-
-
-# Plugin
-# Igual que con Node
 
 
 # Port
@@ -505,7 +505,7 @@ https://docs.docker.com/engine/reference/commandline/logs/
 	-f, --force # Si una imagen tiene varias etiquetas, si no usamos esta opción, borramos solo la etiqueta seleccionada.
 		# Si por el contrario utilizamos esta opción Y el ID de la imagen, borramos todas las etiquetas también
 	--no-prune # No elimina los padres sin etiquetar
-			# NOTE Do not delete untagged parents No termino de entender esto, creo que todo tiene etiqueta 
+			# NOTE Do not delete untagged parents. No termino de entender esto, creo que todo tiene alguna etiqueta
 
 
 # Tag
@@ -535,10 +535,6 @@ https://docs.docker.com/engine/reference/commandline/logs/
 	
 	--no-trunc # No recorta la salida.
 	
-
-# Secret (administra los secretos)
-# NOTE Lo mismo que con node
-
 
 # Stats
 # Muestra en tiempop real las estadísticas de consumo de un contenedor.
@@ -630,20 +626,19 @@ https://docs.docker.com/engine/reference/commandline/logs/
 	-f, --filter # Como es habitual en este tipo de comandos, podemos filtrar la salida.
 			# Las condiciones de filtrado en esta ocasión abarcan campos como la etiqueta o cuando fueron creadas.
 
-# Service
-# Stack
-# Swarm
 
 
 
+# BIBLIOGRAFÍA ACTUAL
 
-
-
-
-
-
-
-
+https://docs.docker.com/get-started/#containers-and-virtual-machines
+https://docs.docker.com/engine/docker-overview/#the-docker-daemon
+https://medium.freecodecamp.org/an-introduction-to-docker-tags-9b5395636c2a
+https://docs.docker.com/storage/
+https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag
+https://docs.docker.com/storage/bind-mounts/
+https://docs.docker.com/storage/tmpfs/
+https://docs.docker.com/engine/reference/commandline/docker/ # Esta página y sus enlaces
 
 
 
