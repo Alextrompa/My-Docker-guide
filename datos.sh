@@ -270,7 +270,7 @@
 # Opciones
 # No hay
 
-
+# Events
 # Muestra todos los eventos correspondientes a TODOS los contenedores.
 # Los eventos se muestran en tiempo real. Este comando es interesante para monitorizar los contenedores.
 # Ejemplo
