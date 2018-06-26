@@ -1,0 +1,35 @@
+Run
+Attach
+Cp
+Rm
+Create
+Start
+Stop
+Pause
+Unpause
+Events
+kill
+Exec
+Export
+Import  NOTE
+History
+Info
+Inspect
+Save
+Load
+Login
+Logout
+Logs NOTE
+Port
+Ps
+Rename
+Restart
+Rmi
+Tag
+Search
+Stats
+Top
+Update
+Version
+Wait
+Images
