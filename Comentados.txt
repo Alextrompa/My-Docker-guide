@@ -33,5 +33,3 @@ Tag
 Rmi
 Info
 Version
-
-Import  NOTE

@@ -1,6 +1,6 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
 # Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, diff, help, image, system
-# Comando de los que por ahora no voy a hablar o no lo voy a hacer directamente: build, node, network, secret, service, stack, swarm y plugin.
+# Comando de los que por ahora no voy a hablar o no lo voy a hacer directamente: build, node, network, secret, service, stack, swarm, plugin e import.
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
 
@@ -337,18 +337,6 @@
 	-o, --output # Mete la salida en el fichero especificado en vez de en la salida estándar
 	#Viendo esto se puede decir que utilza la sintaxis de cpio	
 
-
-# Import
-# Importa el contenido de fichero comprimido para crear el sistema de ficheros de una imagen
-# No le termino de ver mucho la utilidad, ni siquiera he podido probarlo sin errores.
-# Ejemplo
-
-	docker import http://example.com/exampleimage.tgz
-
-# Opciones
-
-	-c, --change # Utiliza las instrucciones del Dockerfile (ya se hablará de él) para crear la imagen
-	-m, --message # Establece un mensaje de confirmación para la imagen importada
 
 # History
 # Muestra el historial de una imagen
