@@ -1,7 +1,7 @@
 \documentclass[]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[total={18cm,21cm},top=2.5cm, left=3cm]{geometry}
+\usepackage[total={17cm,21cm},top=2.5cm, left=2.3cm]{geometry}
 
 
 \title{Administración de aplicaciones Docker}
@@ -14,7 +14,28 @@
 \end{titlepage}
 \section{Descripción y definición de conceptos}
 
-Empezamos
+\vspace{3mm}
+
+\begin{enumerate}
+
+\item{\bf Imagen:} Una Imagen son, básicamente, instrucciones para la creación de un contenedor.
+Estas son de solo lectura.
+
+\item{\bf Contenedor:} Es una instancia ejecutable de una imagen. Se pueden crear, poner en marcha, parar, mover o borrar. Incluso se puede crear una Imagen a partir del estado actual de un contenedor.
+
+\item{\bf Volumen:} Es la mejor forma para que los datos en un contenedor se almacenen de una manera persistente y se conserven aún después de eliminar el contenedor. Facilita que varios contenedores compartan el sistema de ficheros. Son administrados directamente por Docker, por lo que son sencillos de mantener. El usuario puede crearlos, borrarlos y modificarlos.
+
+\item{\bf Montaje ligado:} Parecidos a los volúmenes, aunque tienen una funcionalidad más limitada. Mientras que los volúmenes se almacenan de manera aislada, los montajes ligados consisten en montar un fichero o directorio en un contenedor. El fichero es referenciado por su ruta.
+
+\hspace{1cm} Peligroso: El sistema de ficheros de la máquina queda expuesto ante los programas del contenedor por lo que podrían modificarlo.
+
+\item{\bf Montaje tmpfs:} Esta opción solo se puede utilizar en linux, y se utiliza cuando no queremos que los datos del contenedor perduren en el tiempo. Esto puede ser así por seguridad, porque el contenedor puede manejar una gran cantidad de datos o por cualquier otro motivo.
+
+
+ \item{\bf Registry:} Un registry es una base de datos de imágenes. O dicho de otra forma, un sitio donde guardar las imágenes, un hub.	El registry más famoso es el Docker Hub o Docker Store, donde podemos crear una cuenta de usuario y subir nuestras imágenes (también descargarlas).
+ Registry es en sí otra imágen, por lo que sí, podemos descargarla, hacer un contenedor con ella y guardar en el mismo nuestras imágenes.
+			
+\end{enumerate}
 
 
 
