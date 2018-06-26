@@ -1,5 +1,5 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
-# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, pull, diff, help, image, system
+# Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, diff, help, image, system
 # Comando de los que por ahora no voy a hablar o no lo voy a hacer directamente: build, node, network, secret, service, stack, swarm y plugin.
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
@@ -537,7 +537,7 @@ https://docs.docker.com/engine/reference/commandline/logs/
 	
 
 # Stats
-# Muestra en tiempop real las estadísticas de consumo de un contenedor.
+# Muestra en tiempo real las estadísticas de consumo de un contenedor.
 # Ejemplo
 
 	docker stats cont
@@ -627,6 +627,17 @@ https://docs.docker.com/engine/reference/commandline/logs/
 			# Las condiciones de filtrado en esta ocasión abarcan campos como la etiqueta o cuando fueron creadas.
 
 
+# Pull
+# Descarga una imagen o repositorio de un registry
+# Ejemplo
+
+	docker pull hello-world
+	
+# Opciones
+
+	-a, --all # Si hay varias etiquetas de la imagen, se las descarga todas.
+	
+	--disable-content-trust # No verifica el contenido de la imagen.
 
 
 # BIBLIOGRAFÍA ACTUAL
