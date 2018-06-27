@@ -37,7 +37,35 @@ Estas son de solo lectura.
 			
 \end{enumerate}
 
+\section{Administración de imágenes y contenedores}
 
+\subsection{Pull}
+
+Empecemos la administración, actualmente no tenemos ninguna imagen con la que crear contenedores, así que lo primero que debemos hacer es descargar alguna.
+Para descargar una imagen utilizamos el comando pull.
+
+\begin{center}
+	
+	Descargamos la imagen "hello-world":
+	\vspace{1mm}
+	
+	
+	\em docker pull hello-world
+	
+\end{center}
+
+Además, este comando tiene opciones.
+Una opción es $ -a,--all $ que hace que se descarguen todas las versiones de una imagen.
+
+\begin{center}
+Ejemplo  ( {\bf NO} usar, demasiadas versiones): 
+\\
+\vspace{1mm}
+\em docker -a docs/docker.github.io
+
+\end{center}
+
+La otra opción, aunque no muy relevante, es  {\it --disable-content-trust }  que no verifica el contenido de la imagen.
 
 
 \end{document}
