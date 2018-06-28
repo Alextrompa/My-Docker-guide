@@ -17,6 +17,7 @@
 \vspace{3mm}
 
 \begin{enumerate}
+\renewcommand{\labelenumi}{$ \bullet $}
 
 \item{\bf Imagen:} Una Imagen son, básicamente, instrucciones para la creación de un contenedor.
 Estas son de solo lectura.
@@ -48,8 +49,7 @@ Para descargar una imagen utilizamos el comando pull.
 	
 	Descargamos la imagen "hello-world":
 	\vspace{1mm}
-	
-	
+	\\
 	\em docker pull hello-world
 	
 \end{center}
@@ -66,6 +66,192 @@ Ejemplo  ( {\bf NO} usar, demasiadas versiones):
 \end{center}
 
 La otra opción, aunque no muy relevante, es  {\it --disable-content-trust }  que no verifica el contenido de la imagen.
+
+
+\subsection{Create}
+
+Ahora que tenemos una imagen descargada, vamos a crear un contenedor con ella.
+
+\begin{center}
+
+	\it docker create hello-world
+
+\end{center}
+
+Como podemos ver, no se ha producido salida alguna, salvo el id del contenedor. Esto es así porque el contenedor se ha creado, pero no se ha puesto en marcha.
+
+\subsection{Start}
+
+Ahora vamos a activar el contenedor que acabamos de crear, para ello escribimos:
+
+\begin{center}
+	
+	\it docker start -a {\bf ID}
+	\\ Siendo {\bf ID} la salida del comando anterior.
+\end{center}
+
+Este comando activa contenedores que están parados.
+Estos contenedores pueden estar parados porque que se les haya detenido desde fuera (ahora lo vemos) o porque se hayan creado pero no se hayan puesto en marcha.
+Opciones:
+
+\begin{enumerate}
+
+\renewcommand{\labelenumi}{$ \bullet $}
+
+	\item {\bf -a, --attach} Une la salida estándar y de error a la del terminal.
+	
+	\item {\bf--detach-keys} Anula la secuencia de teclas para separarla del contenedor.
+	
+	\item {\bf-i, --interactive} Une la entrada estándar del contenedor a la del terminal (muy interesante con otras imágenes que veremos más adelante). 
+
+\end{enumerate}
+
+
+\subsection{Run}
+
+Ahora que ya sabemos como descargar imágenes, crear contenedores y ponerlos en marcha se nos viene a la mente una pregunta ¿No hay una forma más rápida?.
+La respuesta es que sí, y es el comando run.
+Vamos a ver un ejemplo rápido y sencillo para entenderlo:
+
+\begin{center}
+
+	\it docker run hello-world
+
+\end{center}
+
+Ahora, para ver como funcionan algunas de las muchas opciones que tiene este comando vamos a ver más ejemplos:
+
+\begin{center}
+
+	\it	docker run -it ubuntu
+	
+\end{center}
+
+Con este comando creamos y entramos a controlar un contenedor cuya imagen es un SO. En este contenedor podemos escribir los comandos de bash que conocemos, desde un find hasta un apt, pasando por cualquier comando instalado. Además, dentro de este contenedor hay un sistema de ficheros, como el de cualquier sistema linux. Vamos a escribir las siguientes órdenes en este contenedor:
+\begin{center}
+	
+	\it
+	cd /home\\
+	mkdir usuario\\
+	cd usuario\\
+	mkdir Escritorio\\
+	cd Escritorio\\
+	echo "Creo un fichero y le introduzco un texto" > Mifichero.txt\\
+	exit
+
+\end{center}
+Las opciones que hemos puesto en el anterior comando son:
+\begin{enumerate}
+\renewcommand{\labelenumi}{$ \bullet $}
+
+\item {\it -i} interactive, mantiene abierta la entrada estándar del contenedor en el términal. Necesaria para los sistemas operativos.
+\item {\it -t} Asgina un pseudo -TTY, lo que hace que sea correcto su uso para la utilización de un shell interactivo.
+
+\end{enumerate}
+Otra cosa de la que podemos habernos dado cuenta es que nosotros no teníamos descargada la imagen ubuntu, pero aún así se ha creado el contenedor apropiado.
+Esto es debido a que, tanto run como create, descargan la imagen ordenada del Docker Hub cuando no la encuentran localmente.
+\\\\
+
+Otro ejemplo muy interesante:
+
+\begin{center}
+
+	\it docker run -t -p 4000:4000 docs/docker.github.io:latest
+
+\end{center}
+La imagen que acabamos de utilizar es la propia documentación oficial de Docker, que podemos visualizar, como nos dice la propia salida, escribiendo 0.0.0.0:4000 en un navegador.
+Las opciones que hemos puesto en este comando son:
+\begin{enumerate}
+\renewcommand{\labelenumi}{$ \bullet $}
+	
+\item {\it -t}
+ El efecto es el mismo que antes, pero en este caso, la diferencia entre ponerlo y no ponerlo, es que si pulsamos las teclas {\bf Ctrl + C} y la opción no está puesta, recuperamos el prompt del sistema, pero el contenedor termina y la documentación ya no es accesible. Si la opción está puesta, como en este caso, podemos recuperar el terminal y seguir visualizando la documentación.
+
+\item {\it -p X:Y} 
+El contenedor está escuchando en su puerto Y (podemos imaginar que es un puerto virtual), lo que hacemos es que el puerto X de la máquina se iguala a ese puerto Y (que es el que especifica la imagen). De esta forma es como se consigue que un contenedor haga uso de la red.
+
+\end{enumerate}
+
+El comando run tiene muchas más opciones aparte de las vistas en los ejemplos anteriores.
+A continuación se muestran algunas opciones más:
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{$ \bullet $}
+
+\item {\bf -a, --attach}
+
+			Liga el terminal con la salida estandar, la entrada estandar o la salida de error estandar del programa ejecutado.
+			Esta opción debe ejecutarse en modo de primer plano y es la que se utiliza por defecto.
+			No es necesario ligar las tres salidas, sino que puede elejirse que salidas se ligan.
+	
+\item {\bf --add-host=[]}
+	
+			Añade un host IP custom con el formato host:ip
+			También añade una línea a /etc/hosts.
+			Esta opción se puede usar varias veces.
+	
+\item {\bf -c=X, --cpu-shares=X}
+	
+			Por defecto se utiliza la opción -c=1024.
+			El parámetro X se utiliza para repartir de manera proporcional el tiempo de CPU entre todos los contenedores cuando estos intentan utilizar más del 100%.
+			Si por ejemplo tenemos tres contenedores ejecutándose en el sistema con 512, 512 y 1024 respectivamente, el tiempo se repartirá de la siguiente forma: 25%, 25% y 50%.
+			Nota: Si se disponen de varios nucleos, el sistema repartirá el tiempo de CPU llevando en cuenta todos ellos.
+	
+	
+\item {\bf --cpu-count=X}
+	
+			Limita el número de CPUs disponibles para la ejecución de contenedores a X.
+			En Windows Server se aproxima al porcentaje de uso de la CPU.
+	
+\item {\bf --cpu-percent=X}
+	
+			Limita el porcentaje de uso de CPU disponible para la ejecución de contenedores a X.
+	
+\item {\bf --cpu-period=X}
+	
+			Esta opcíon se utiliza para modificar el tiempo de CPU que el planificador concede a los procesos de los contenedores.
+	
+\item {\bf --cpu-rt-period=X}
+	
+			Con esta opción podemos limitar el periodo de uso de CPU a un determinado tiempo real en microsegundos.
+	
+\item {\bf --dns=[]}
+	
+			Utiliza un servidor de DNS diferente al por defecto.
+	
+			Esta opción puede ser usada para sobrescribir la configuración que se le proporciona al contenedor.
+			Normalmente esta opción es necesaria cuando la configuración DNS falla. En este caso, siempre que se ejecute algo habrá que utilizarla.
+	
+\item {\bf -m, --memory=""}
+	
+			Permite añadir una restricción de memoria al contenedor con el formato <número>[<unidad>], donde unidad puede ser b, k, m o g.
+			Si el sistema soporta memoria swap, esta restricción puede ser mayor que la propia memoria física.
+	
+\item {\bf --memory-reservation=""}
+	
+			Mismo formato que el anterior.
+			Al añadir este flag, si el sistema detecta que hay poca memoria restante, el sistema obliga a los contenedores a limitar su consumo a
+			lo que se les haya reservado con este comando.
+			Cuando hagamos uso de esta opción deberiamos establecer un límite por debajo del de la opción anterior (pues la anterior opción es como
+			un límite hard y esta como uno soft). Por defecto, la memoria reservada es la misma que la establecida con la opción anterior.
+	
+\item {\bf --memory-swap=""}
+	
+			Establece el límite de memoria swap que puede utilizar un contenedor. Esta opción debe ser siempre utilizada con la opción -m.
+			El formato utilizado con esta opción es el mismo que el de las dos opciones anteriores, pero si no especificamos unidad se utiliza b.
+			El límite establecido debería ser mayor que el de la opción -m.
+			Por defecto se establece al doble de la opción -m.
+			Si no queremos limitar la memoria swap, utilizaremos -1 como límite.
+	
+\item {\bf --name}
+	
+			Establece un nombre para el contenedor que se va a poner en ejecución. Esta opción es muy util, pues luego podemos referirnos al contenedor por su nombre en lugar de por su ID.
+			(Si no se da un nombre a un contenedor, se le asigna uno aleatorio).
+
+
+\end{enumerate}
+
+
 
 
 \end{document}
