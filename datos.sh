@@ -295,7 +295,7 @@
 
 
 # kill
-# Mata un contenedor. El proceso principal del mismo recibe, por defecto, la señal SIGKILL.
+# Mata un contenedor. El proceso principal del mismo recibe, por defecto, la señal SIGKILL (a diferencia de stop, que usa SIGTERM).
 # Ejemplo
 
 	docker kill boring_meninsky

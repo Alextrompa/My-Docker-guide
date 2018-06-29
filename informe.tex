@@ -7,11 +7,14 @@
 \title{Administración de aplicaciones Docker}
 \author{Alejandro Martínez Fernández}
 
+\makeindex
+
 
 \begin{document}
 \begin{titlepage}
 	\maketitle
 \end{titlepage}
+
 \section{Descripción y definición de conceptos}
 
 \vspace{3mm}
@@ -245,13 +248,107 @@ A continuación se muestran algunas opciones más:
 	
 \item {\bf --name}
 	
-			Establece un nombre para el contenedor que se va a poner en ejecución. Esta opción es muy util, pues luego podemos referirnos al contenedor por su nombre en lugar de por su ID.
-			(Si no se da un nombre a un contenedor, se le asigna uno aleatorio).
-
+			Establece un nombre para el contenedor que se va a poner en ejecución. Esta opción es muy útil, pues luego podemos referirnos al contenedor por su nombre (haremos esto) en lugar de por su ID
+			(si no se da un nombre a un contenedor, se le asigna uno aleatorio).
 
 \end{enumerate}
+
+\subsection{Ps}
+
+Ahora que hemos puesto algunos contenedores en marcha, vamos a entrar ver el estado general del sistema. Para esto vamos a utilizar la orden
+{\it ps} que lista los contenedores. Vamos a ver un ejemplo:
+
+\begin{center}
+\it
+	docker ps
+	\\
+	\vspace{1mm}
+	docker ps -a
+	\\
+	\vspace{1mm}
+	docker ps --filter status=exited
+\end{center}
+El primer comando muestra todos los contenedores que se estén ejecutando en este momento.
+La salida del comando es la siguiente:
+\begin{enumerate}
+	\item {\bf CONTAINER ID}
+	
+		ID "corto" del contenedor, sobran las descripciones.
+		
+	\item {\bf IMAGE}
+	
+		Imagen utilizada para crear el contenedor.
+	\item {\bf COMMAND}
+	
+		Programa que se está ejecutando dentro del contenedor.
+	\item {\bf CREATED}
+	
+		Cuanto tiempo ha pasado desde que se creó.
+	\item {\bf STATUS}
+	
+		Estado actual del contenedor (corriendo, terminado, pausado, etc).
+	\item {\bf PORT}
+	
+		Puertos utilizados por el contenedor.
+	\item {\bf NAME}
+	
+		Nombre del contenedor (el que hayamos puesto al crearlo o le haya asignado el sistema).
+
+\end{enumerate}
+
+El resto de comandos utilizan unas opciones las cuales vamos a explicar a continuación junto con el resto de opciones del comando:
+
+\begin{enumerate}
+	\renewcommand{\labelenumi}{$ \bullet $}
+	\item {\bf -a, --all}
+	
+		Muestra todos los contenedores.
+	\item {\bf -s, --size}
+		
+		Añade una columna con el tamaño de los ficheros del contenedor.
+		
+	\item {\bf -q, --quiet}
+	
+		Solo muestra los IDs de los contenedores.
+		
+	\item {\bf --no-trunc}
+	
+		No recorta el tamaño de la salida.
+	\item {\bf -n X, --last X}
+	
+		Muestra sólo los X últimos contenedores creados.
+	\item {\bf --latest, -l}
+	
+		Muestra sólo el último contenedor creado. Equivale a "-n 1".
+	\item {\bf --format}
+	
+		Usando una plantilla Go, podemos formatear la salida.
+	\item {\bf -f, --filter}
+	
+		Con esta opción, podemos añadir condiciones. En la salida solo se mostrarán los contenedores que las cumplan.
+		Las condiciones que podemos poner pueden abarcar cosas como el id, el nombre o las networks que utilizan.
+
+\end{enumerate}
+
+\subsection{Stop}
+Ahora que hemos visto como poner contenedores en marcha, vamos a ver como pararlos.
+Para esto utilizamos el comando {\it "stop"}. Tras un periodo de gracia (que desconozco cuál es por defecto), los mata si no se han parado. Después de esto, si vemos su estado con {\it docker ps}, será terminado. Vamos a ver un ejemplo:
+
+\begin{center}
+\it
+docker stop NOMBRE
+
+\end{center}
+En el campo {\bf NOMBRE} pon el nombre de cualquiera de los contenedores que hemos abierto hasta ahora.
+Este comando solo tiene una opción, {\bf -t, --time} que especifica el periodo de gracia en segundos a esperar por el comando antes de matarlo. Si a esta opción no le acompañaun tiempo, usa diez segundos.
+
 
 
 
 
 \end{document}
+
+
+
+
+
