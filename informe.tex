@@ -14,7 +14,7 @@
 \begin{titlepage}
 	\maketitle
 \end{titlepage}
-
+\tableofcontents
 \section{Descripción y definición de conceptos}
 
 \vspace{3mm}
@@ -342,7 +342,61 @@ docker stop NOMBRE
 En el campo {\bf NOMBRE} pon el nombre de cualquiera de los contenedores que hemos abierto hasta ahora.
 Este comando solo tiene una opción, {\bf -t, --time} que especifica el periodo de gracia en segundos a esperar por el comando antes de matarlo. Si a esta opción no le acompañaun tiempo, usa diez segundos.
 
+\subsection{Rename}
+Y ahora, ¿qué pasa si creando un contenedor me olvido de darle un nombre o me equivoco?
+Bien, Docker ha pensado también en esto. Con el comando {\bf rename} podemos cambiar el nombre de un contenedor.
+Vamos a ver un ejemplo:
+\begin{center}
+\it
+docker rename NOMBRE nombre\_nuevo
 
+\end{center}
+Ahora, el antiguo contenedor {\bf NOMBRE} se llama \textbf{\textit {nombre\_nuevo}}.
+
+\subsection{Pause}
+Otro comando muy interesante es el comando {\it pause} que para la ejecución de un contenedor (más concretamente, para a los procesos de dentro del contenedor) de la misma forma que lo hace la combinación
+de teclas {\bf Ctrl + Z} en un terminal.
+Ejemplo:
+\begin{center}
+	\it
+	docker pause NOMBRE
+	\\
+	\vspace{1mm}
+	(Como siempre, \textbf{NOMBRE} es el nombre de un contenedor. No lo voy a decir más)
+\end{center}
+Si a continuación utilizamos el comando {\it docker ps} veremos que el contenedor sigue en ejecución, pero ha sido detenido.
+
+\subsection{Unpause}
+Acabamos de parar los procesos de un contenedor, ahora vamos a ver como reanudarlos.
+El comando que vamos a utilizar es \textbf{unpause}.
+Para utilizarlo simplemente seguimos la sintaxis del ejemplo:
+\begin{center}
+	\it docker unpause NOMBRE
+\end{center}
+
+\subsection{kill}
+Ahora vamos a matar contenedores, para ello vamos a usar el comando \textbf{kill}.
+\begin{center}
+	\textit{docker kill NOMRE}
+\end{center}
+Si utilizamos el comando \textit{docker ps -a} podemos ver que la situación final del contenedor es la misma que utilizando la orden stop.
+La diferencia entre las ordenes es la señal utilizada, pues aquí usamos SIGKILL.
+Otra característica muy interesante es que la única opción disponible \textit{(-s, --signal)} nos permite enviar otra señal al contenedor.
+\hspace{1cm} Nota: En realidad la señal se envía al proceso principal del contenedor, no al contenedor en sí.
+\begin{center}
+	\it
+	docker kill -s KILL NOMBRE
+\end{center}
+
+\subsection{Restart}
+La siguiente orden que vamos a ver es \textbf{restart} que reinicia o relanza un contenedor.
+Esta opción puede ser interesante si un contenedor da problemas. Además este comando no afecta al espacio de memoria de un contenedor, por lo que no se pierden cambios.
+Ejemplo:
+\begin{center}
+\it docker restart NOMBRE
+\end{center}
+
+\subsection{Update}
 
 
 
