@@ -1,6 +1,6 @@
 # Cuando vaya a hablar de como hacer tu propio docker, hablaré sobre el comando build
 # Comandos de los que no voy a hablar porque creo que no merece la pena: commit, container, push, diff, help, image, system
-# Comando de los que por ahora no voy a hablar o no lo voy a hacer directamente: build, node, network, secret, service, stack, swarm, plugin e import.
+# Comando de los que por ahora no voy a hablar o no lo voy a hacer directamente: build, node, network, secret, service, stack, swarm, plugin, import y logs.
 
 #Una primera tarea que podriamos llevar a cabo con docker es activarlo para que se inicie durante el arranque. Para esto usamos:
 

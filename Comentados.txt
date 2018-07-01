@@ -9,7 +9,6 @@ Pause
 Unpause
 kill
 Restart
-
 Update
 Attach
 Port
@@ -18,8 +17,8 @@ Rm
 Exec
 Export
 Wait
+
 Events
-Logs NOTE
 Stats
 Top
 Inspect

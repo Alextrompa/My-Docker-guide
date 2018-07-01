@@ -374,7 +374,7 @@ Para utilizarlo simplemente seguimos la sintaxis del ejemplo:
 	\it docker unpause NOMBRE
 \end{center}
 
-\subsection{kill}
+\subsection{Kill}
 Ahora vamos a matar contenedores, para ello vamos a usar el comando \textbf{kill}.
 \begin{center}
 	\textit{docker kill NOMRE}
@@ -397,8 +397,205 @@ Ejemplo:
 \end{center}
 
 \subsection{Update}
+Antes hemos hablado sobre el problema de equivocarnos poniendo el nombre de un contenedor, pero, nos podemos equivocar en otros detalles (mucho más importante que el nombre) en la creación de este. Por esta razón existe el comando \textbf{update} que actualiza la configuración de un contenedor. De esta forma podemos, tanto corregir errores como poner la configuración de un contenedor al día si por ejemplo cambian el contexto de la máquina (durante la realización de esta guía, podemos ir creando más contenedores según veamos y jugando un poco con ellos).
+Veamos un ejemplo:
+\begin{center}
+	\it
+	docker update --cpus 1 NOMBRE
+\end{center}
+La explicación de este comando recae en las opciones utilizadas, pues es en ellas donde se especifica la nueva configuración del contenedor.
+Vamos a ver algunas de las opciones que tiene este comando:
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{$ \bullet $}
+
+\item {\bf --cpu-period}
+
+Modifica el tiempo de CPU que el planificador concede a los procesos de los contenedores.
+
+\item {\bf --cpu-quota}
+
+Modifica el porcentaje de tiempo de CPU que el planificador concede a los procesos contenedores.
+
+\item {\bf --cpus}
+
+Limita el número de CPUs que puede utilizar el contenedor.
+
+\item {\bf -m, --memory}
+
+Limita la memoria que puede usar el contenedor.
+
+\item {\bf --memory-reservation}
+
+Cuando se detecta que queda poca memoria restante el sistema obliga a los contenedores a utilizar como mucho esta cantidad de memoria. Evidentemente, esta debe ser menor que la memoria límite.
+
+\item {\bf --memory-swap}
+
+Establece el limite de memoria swap que puede utilizar un contenedor.
+
+\end{enumerate}
+
+\subsection{Attach}
+
+Un contenedor ya en ejecución se puede unir a un terminal (como si hubiesemos utilizado la opción -a del run) con  el comando {\bf attach}.
+Ejemplo:
+\begin{center}
+	\it
+	docker run --name nombre -it ubuntu\\
+	~Realizamos acciones dentro del contenedor y al final usamos exit~\\
+	docker start nombre\\
+	docker attach nombre\\
+
+\end{center}
+Si hacemos esto, podemos ver que nos hemos vuelto a conectar al mismo contenedor del que habíamos salido.
+Esta orden es muy interesante cuando, por ejemplo, apagamos la máquina y queremos volver a conectarnos al contenedor.
 
 
+Opciones:
+\begin{enumerate}
+
+\item {\bf --no-stdin}
+
+No liga la entrada estandar, interesante si solo queremos la salida.
+
+\item {\bf --sig-proxy}
+
+	Atrapa todas las señales del proceso.
+
+\end{enumerate}
+
+
+\subsection{Port}
+El siguiente comando ({\bf port}) muestra los puertos que está utilizando un contenedor.
+Estos puertos no están separados de los de la máquina real, por lo que es así como se consigue la comunicación del contenedor con el exterior.
+Vamos a ver un ejemplo:
+\begin{center}
+	\it
+	docker run -it --name contenedor -p 4000:4000 docs/docker.github.io:latest\\
+	docker port contenedor
+\end{center}
+
+\subsection{Cp}
+
+Describamos una situación ficticia, hemos estado trabajando dentro de un contenedor con un fichero, y queremos copiarlo para enviarlo a alguien o tenerlo guardado en otro sitio.
+Para esto vamos a utilizar el comando {\bf cp} que copia ficheros entre contenedores y el sistema de ficheros local.
+Ejemplo:
+
+\begin{center}
+\it
+docker cp nombre:/FICHERO /RUTA
+\end{center}
+\textbf{/FICHERO} es la ruta del fichero del contenedor {\bf nombre} que queremos copiar a {\bf RUTA}.
+Si el fichero que se va a copiar es un directorio, este se copiará recursivamente (por lo que podemos decir que docker cp equivale al cp -a de Unix).
+
+Opciones:
+
+\begin{enumerate}
+	
+\renewcommand{\labelenumi}{$ \bullet $}
+
+\item {\bf -a, --archive}
+
+Copia también los UID y GID de los ficheros.
+
+\item {\bf -L, --follow-link}
+
+Si en alguna de las rutas, se utiliza un enlance simbólico a un directorio, este se sigue.
+
+\end{enumerate}
+
+
+\subsection{Rm}
+
+Después de haber creado y administrado contenedores, le llega el turno a {\bf rm} que borra contenedores que estén parados.
+Si se borran, ya no se podrán volver a activar (de hecho, dejarán de aparecer en {\it docker ps -a}).
+Ejemplo:
+
+\begin{center}
+	\it
+	docker rm NOMBRE
+\end{center}
+
+Opciones:
+
+\begin{enumerate}
+	\renewcommand{\labelenumi}{$ \bullet $}
+	\item {\bf -f, --force}
+	
+	Fuerza la eliminación del contenedor elegido. Para esto envía la señal SIGKILL. 
+	Aunque los contenedores deben estar parados, pueden estar corriendo si usamos esta opción.
+	\item {\bf -l, --link}
+	
+	Borra los enlaces especificados.
+	\item {\bf -v, --volumes}
+	
+	Borra los volúmenes asociados a los contenedores.
+\end{enumerate}
+
+\subsection{exec}
+
+Ahora vamos a ver el comando {\bf exec}, una orden que creo tiene mucha utilidad, pues, por ejemplo, deja de ser necesario entrar dentro de un contenedor para ejecutar un solo comando.
+Como ya se puede deducir, {\it exec} ejecuta un comando dentro de un contenedor.
+El comando utilizado solo estará activo mientras el proceso principal del contenedor lo esté.
+El comando no se reiniciará si el contenedor es reiniciado.
+Se utilizará el directorio por defecto del contenedor.
+Si la imagen subyacente tiene especificado un directorio diferente, se usará este en su lugar. 
+El comando deberá ser ejecutable.
+Veamos un ejemplo:
+\begin{center}
+	\it
+	docker exec NOMBRE -t top
+\end{center}
+
+Opciones:
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{$ \bullet $}
+\item {\bf -d, --detach}
+
+Ejecutar en segundo plano con respecto a este terminal.
+\item {\bf -i, --interactive}
+
+Mantiene la entrada estándar abierta aunque no se haya ligado.
+\item {\bf --privileged}
+
+Da privilegios extendidos al comando.
+\item {\bf -t, --tty}
+
+Establece un pseudo-tty.
+\item {\bf -u, --user}
+
+UID.
+
+\end{enumerate}
+
+\subsection{Export}
+{\bf Export} es el siguiente comando.
+Exporta el contenido del sistema de ficheros de un contenedor como un fichero tar.
+Este comando es interesante para la realización de copias de seguridad.
+Debemos tener en cuenta que no funciona con volúmenes.
+Ejemplo:
+\begin{center}
+	\it
+	docker export NOMBRE > comprimido.tar
+\end{center}
+
+Aquí solo tenemos una opción, {\it -o, --output} que introduce la salida en el fichero especificado en vez de en la salida estándar.
+Viendo esto se puede decir que utiliza la misma sintaxis que cpio.
+
+\subsection{Wait}
+Wait bloquea la terminal hasta que el contenedor (o contenedores) seleccionados terminen su ejecución.
+Cuando se pare la ejecución del contenedor seleccionado, el terminal mostrará el código de salida del contenedor y se desbloqueará.
+Para este ejemplo necesitaremos dos terminales, las instrucciones en {\bf negrita} irán a uno y las otras al otro:
+\begin{center}
+	\textit{
+		docker run -it --name unnombre ubuntu\\
+		\textbf{docker wait unnombre}\\
+		\it exit
+	}
+\end{center}
+
+\subsection{Events}
 
 \end{document}
 
