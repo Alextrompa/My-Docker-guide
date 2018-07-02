@@ -3,18 +3,25 @@
 \usepackage[utf8]{inputenc}
 \usepackage[total={17cm,21cm},top=2.5cm, left=2.3cm]{geometry}
 
+\usepackage[spanish]{babel}
+
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 \DisableLigatures[-]{encoding = T1}
 
 \title{Administración de aplicaciones Docker}
 \author{Alejandro Martínez Fernández}
+\date{1 de julio de 2018}
 
+\usepackage{graphicx}
 
 
 \begin{document}
 \begin{titlepage}
 	\maketitle
+	\begin{center}
+		\includegraphics[scale=0.35]{logo.png}
+	\end{center}
 \end{titlepage}
 \tableofcontents
 \section{Descripción y definición de conceptos}
@@ -52,7 +59,7 @@ Para descargar una imagen utilizamos el comando pull.
 
 \begin{center}
 	
-	Descargamos la imagen "hello-world":
+	Descargamos la imagen ``hello-world'':
 	\vspace{1mm}
 	\\
 	\em docker pull hello-world
@@ -149,7 +156,7 @@ Con este comando creamos y entramos a controlar un contenedor cuya imagen es un 
 	cd usuario\\
 	mkdir Escritorio\\
 	cd Escritorio\\
-	echo "Creo un fichero y le introduzco un texto" > Mifichero.txt\\
+	echo ``Creo un fichero y le introduzco un texto'' > Mifichero.txt\\
 	exit
 
 \end{center}
@@ -241,12 +248,12 @@ A continuación se muestran algunas opciones más:
 			Esta opción puede ser usada para sobrescribir la configuración que se le proporciona al contenedor.
 			Normalmente esta opción es necesaria cuando la configuración DNS falla. En este caso, siempre que se ejecute algo habrá que utilizarla.
 	
-\item {\bf -m, --memory=""}
+\item {\bf -m, --memory=``''}
 	
 			Permite añadir una restricción de memoria al contenedor con el formato <número>[<unidad>], donde unidad puede ser b, k, m o g.
 			Si el sistema soporta memoria swap, esta restricción puede ser mayor que la propia memoria física.
 	
-\item {\bf --memory-reservation=""}
+\item {\bf --memory-reservation=``''}
 	
 			Mismo formato que el anterior.
 			Al añadir este flag, si el sistema detecta que hay poca memoria restante, el sistema obliga a los contenedores a limitar su consumo a
@@ -254,7 +261,7 @@ A continuación se muestran algunas opciones más:
 			Cuando hagamos uso de esta opción deberiamos establecer un límite por debajo del de la opción anterior (pues la anterior opción es como
 			un límite hard y esta como uno soft). Por defecto, la memoria reservada es la misma que la establecida con la opción anterior.
 	
-\item {\bf --memory-swap=""}
+\item {\bf --memory-swap=``''}
 	
 			Establece el límite de memoria swap que puede utilizar un contenedor. Esta opción debe ser siempre utilizada con la opción -m.
 			El formato utilizado con esta opción es el mismo que el de las dos opciones anteriores, pero si no especificamos unidad se utiliza b.
@@ -289,7 +296,7 @@ La salida del comando es la siguiente:
 \begin{enumerate}
 	\item {\bf CONTAINER ID}
 	
-		ID "corto" del contenedor, sobran las descripciones.
+		ID ``corto'' del contenedor, sobran las descripciones.
 		
 	\item {\bf IMAGE}
 	
@@ -335,7 +342,7 @@ El resto de comandos utilizan unas opciones las cuales vamos a explicar a contin
 		Muestra sólo los X últimos contenedores creados.
 	\item {\bf --latest, -l}
 	
-		Muestra sólo el último contenedor creado. Equivale a "-n 1".
+		Muestra sólo el último contenedor creado. Equivale a ``-n 1''.
 	\item {\bf --format}
 	
 		Usando una plantilla Go, podemos formatear la salida.
@@ -348,7 +355,7 @@ El resto de comandos utilizan unas opciones las cuales vamos a explicar a contin
 
 \subsection{Stop}
 Ahora que hemos visto como poner contenedores en marcha, vamos a ver como pararlos.
-Para esto utilizamos el comando {\it "stop"}. Tras un periodo de gracia (que desconozco cuál es por defecto), los mata si no se han parado. Después de esto, si vemos su estado con {\it docker ps}, será terminado. Vamos a ver un ejemplo:
+Para esto utilizamos el comando {\it stop}. Tras un periodo de gracia (que desconozco cuál es por defecto), los mata si no se han parado. Después de esto, si vemos su estado con {\it docker ps}, será terminado. Vamos a ver un ejemplo:
 
 \begin{center}
 \it
@@ -718,7 +725,7 @@ Si el objeto es un contenedor, se muestra el tamaño total de sus ficheros.
 \end{enumerate}
 
 \subsection{Login}
-\textbf{Login} se utiliza para conectarse a un "registry", que bien puede ser local o puede estar alojada en otro sitio.
+\textbf{Login} se utiliza para conectarse a un ``registry'', que bien puede ser local o puede estar alojada en otro sitio.
 Para hacer un ejemplo, nos vamos a conectar al Docker Hub, para lo que deberemos tener cuenta.
 \begin{center}
 	\it
@@ -920,7 +927,7 @@ No muestra salida, se calla.
 A veces trabajamos con varias versiones de la misma imagen.
 Para diferenciar estas diferentes versiones, recurrimos a las etiquetas.
 Así, \textbf{tag} comando añade una etiqueta a una versión de una imagen.
-La versión se puede especificar con Image:Versión pero si no se especifica, se utiliza la versión "latest" por defecto.
+La versión se puede especificar con Image:Versión pero si no se especifica, se utiliza la versión ``latest'' por defecto.
 Ejemplo:
 
 \begin{center}
@@ -974,6 +981,61 @@ Ejemplo:
 
 Al igual que en la orden \textit{info}, la única opción que tenemos aquí es \textit{-f, --format} que también no permite
 formatear la salida con una plantilla Go.
+
+\begin{thebibliography}{99}
+	\it
+
+	\bibitem{contenidos}https://docs.docker.com/engine/docker-overview/\#docker-engine
+	
+	\bibitem{imagenes}https://docs.docker.com/get-started/
+	\bibitem{contenedores}https://docs.docker.com/get-started/part2/
+	\bibitem{service}https://docs.docker.com/get-started/part3/
+	\bibitem{swarm}https://docs.docker.com/get-started/part4/
+	\bibitem{stack}https://docs.docker.com/get-started/part5/
+	
+	
+	\bibitem{almacenamiento}https://docs.docker.com/storage/
+	\bibitem{volumen}https://docs.docker.com/storage/volumes/
+	\bibitem{montajes ligados}https://docs.docker.com/storage/bind-mounts/
+	\bibitem{montajes tmpfs}https://docs.docker.com/storage/tmpfs/
+	
+	
+	\bibitem{create}https://docs.docker.com/engine/reference/commandline/create/
+	\bibitem{pull}https://docs.docker.com/engine/reference/commandline/pull/
+	\bibitem{start}https://docs.docker.com/engine/reference/commandline/start/
+	\bibitem{run}https://docs.docker.com/engine/reference/commandline/run/
+	\bibitem{ps}https://docs.docker.com/engine/reference/commandline/ps/
+	\bibitem{stop}https://docs.docker.com/engine/reference/commandline/stop/
+	\bibitem{rename}https://docs.docker.com/engine/reference/commandline/rename/
+	\bibitem{pause}https://docs.docker.com/engine/reference/commandline/pause/
+	\bibitem{unpause}https://docs.docker.com/engine/reference/commandline/unpause/
+	\bibitem{kill}https://docs.docker.com/engine/reference/commandline/kill/
+	\bibitem{restart}https://docs.docker.com/engine/reference/commandline/restart/
+	\bibitem{update}https://docs.docker.com/engine/reference/commandline/update/
+	\bibitem{attach}https://docs.docker.com/engine/reference/commandline/attach/
+	\bibitem{port}https://docs.docker.com/engine/reference/commandline/port/
+	\bibitem{cp}https://docs.docker.com/edge/engine/reference/commandline/cp/
+	\bibitem{rm}https://docs.docker.com/edge/engine/reference/commandline/rm/
+	\bibitem{exec}https://docs.docker.com/edge/engine/reference/commandline/exec/
+	\bibitem{export}https://docs.docker.com/engine/reference/commandline/export/
+	\bibitem{wait}https://docs.docker.com/engine/reference/commandline/wait/
+	\bibitem{events}https://docs.docker.com/engine/reference/commandline/events/
+	\bibitem{stats}https://docs.docker.com/engine/reference/commandline/stats/
+	\bibitem{top}https://docs.docker.com/engine/reference/commandline/top/
+	\bibitem{inspect}https://docs.docker.com/engine/reference/commandline/inspect/
+	\bibitem{login}https://docs.docker.com/edge/engine/reference/commandline/login/
+	\bibitem{logout}https://docs.docker.com/engine/reference/commandline/logout/
+	\bibitem{images}https://docs.docker.com/engine/reference/commandline/images/
+	\bibitem{search}https://docs.docker.com/engine/reference/commandline/search/
+	\bibitem{history}https://docs.docker.com/engine/reference/commandline/history/
+	\bibitem{save}https://docs.docker.com/edge/engine/reference/commandline/save/
+	\bibitem{load}https://docs.docker.com/engine/reference/commandline/load/
+	\bibitem{tag}https://docs.docker.com/engine/reference/commandline/tag/
+	\bibitem{tag}https://medium.freecodecamp.org/an-introduction-to-docker-tags-9b5395636c2a
+	\bibitem{rmi}https://docs.docker.com/engine/reference/commandline/rmi/
+	\bibitem{info}https://docs.docker.com/engine/reference/commandline/info/
+	\bibitem{version}https://docs.docker.com/engine/reference/commandline/version/
+\end{thebibliography}
 
 
 \end{document}
