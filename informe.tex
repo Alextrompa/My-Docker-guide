@@ -11,10 +11,44 @@
 
 \title{Administración de aplicaciones Docker}
 \author{Alejandro Martínez Fernández}
-\date{1 de julio de 2018}
+\date{Segundo Cuatrimestre del curso 2017/2018}
 
 \usepackage{graphicx}
 
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{color}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\lstdefinestyle{Bash}{language=bash,
+	basicstyle=\small,      % the size of the fonts that are used for the code
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+	stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+	% will be numbered
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=single,                   % adds a frame around the code
+	rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+	tabsize=4,                      % sets default tabsize to 2 spaces
+	captionpos=b,                   % sets the caption-position to bottom
+	breaklines=true,                % sets automatic line breaking
+	breakatwhitespace=true,        % sets if automatic breaks should only happen at whitespace
+	%	title=\lstname,                 % show the filename of files included with \lstinputlisting;
+	commentstyle=\color{purple},
+	keywordstyle=\color{pblue},
+	stringstyle=\color{pred},
+	moredelim=[il][\textcolor{pgrey}]{\$\$},
+	moredelim=[is][\textcolor{pgrey}]{\%\%},
+	inputencoding=utf8,
+	extendedchars=true,
+	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 {\%}{{\%}}1
+}
 
 \begin{document}
 \begin{titlepage}
@@ -24,6 +58,23 @@
 	\end{center}
 \end{titlepage}
 \tableofcontents
+
+\newpage
+\begin{center}
+	\bf Resumen
+\end{center}
+En este documento expongo las actividades realizadas durante el curso 2017/18 durante mi estancia como alumno interno de DITEC bajo la tutela del profesor Juan Piernas Cánovas.
+\\\\Las actividades que he realizado han sido investigar el funcionamiento de los contenedores Docker, aquí expongo un manual de uso bastante completo.
+\\
+\begin{center}
+	\bf Script de instalación
+\end{center}
+
+\lstinputlisting[style=Bash]{script.sh}
+
+
+
+\newpage
 \section{Descripción y definición de conceptos}
 
 \vspace{3mm}
